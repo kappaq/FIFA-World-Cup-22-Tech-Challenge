@@ -7,9 +7,9 @@ from collections import defaultdict
 import pandas as pd 
 import time
 
-games = ['//*[@id="g_1_jsidfnm5"]','//*[@id="g_1_0G0LfGbo"]','//*[@id="g_1_4pe0g62B"]','//*[@id="g_1_GUm04257"]',
+games_round_1 = ['//*[@id="g_1_jsidfnm5"]','//*[@id="g_1_0G0LfGbo"]','//*[@id="g_1_4pe0g62B"]','//*[@id="g_1_GUm04257"]',
 '//*[@id="g_1_p42XiEr4"]', '//*[@id="g_1_8pCMVNR1"]', '//*[@id="g_1_2ucxiYcA"]', '//*[@id="g_1_IJ781Sp9"]',
-'//*[@id="g_1_ARmio3Rl"]', '//*[@id="g_1_YXjQDWEJ"]', '//*[@id="g_1_hjgnnqCr"]']
+'//*[@id="g_1_ARmio3Rl"]', '//*[@id="g_1_YXjQDWEJ"]', '//*[@id="g_1_hjgnnqCr"]','//*[@id="g_1_4pXg5OIK"]','//*[@id="g_1_GpSZeKu7"]','//*[@id="g_1_zZAxc0Q0"]','//*[@id="g_1_zBSk643E"]']
 
 lista_category = []
 n = 0
@@ -38,7 +38,7 @@ results = driver.find_element(By.XPATH, '//*[@id="li1"]')
 driver.execute_script("arguments[0].click();", results)
 
 
-for game in games:
+for game in games_round_1:
 	original_window = driver.current_window_handle
 	game_1 = driver.find_element(By.XPATH, game)
 	driver.execute_script("arguments[0].click();", game_1)
