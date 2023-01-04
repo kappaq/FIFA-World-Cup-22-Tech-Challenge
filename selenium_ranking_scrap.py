@@ -40,12 +40,18 @@ for i in range(len(rows_count)):
     teams = driver.find_element(By.XPATH,
                                 '//*[@id="content"]/main/section[2]/div/div/div/table/tbody/tr[' + str(
                                     i) + ']/td[3]')
+    total_points = driver.find_element(By.XPATH,
+                                '//*[@id="content"]/main/section[2]/div/div/div/table/tbody/tr[' + str(i) + ']/td[4]')
+    previous_points = driver.find_element(By.XPATH,
+                                '//*[@id="content"]/main/section[2]/div/div/div/table/tbody/tr[' + str(i) + ']/td[5]')
     ranks = driver.find_element(By.XPATH,
                                 '//*[@id="content"]/main/section[2]/div/div/div/table/tbody/tr[' + str(i) + ']/td[6]')
     dict_res['RK'].append(index.text)
     dict_res['Teams'].append(teams.text)
-    dict_res['Rank'].append(ranks.text)
-
+    dict_res['Total Points'].append(total_points.text)
+    dict_res['Previous Points'].append(previous_points.text)
+    dict_res['+/-'].append(ranks.text)
+    
 # go to next pages
 for page in range(4):
     next_page = driver.find_element(By.XPATH, '//*[@id="content"]/main/section[2]/div/div/div[2]/div/div/div/div/div[3]/div/button')
@@ -60,12 +66,20 @@ for page in range(4):
         teams = driver.find_element(By.XPATH,
                                     '//*[@id="content"]/main/section[2]/div/div/div/table/tbody/tr[' + str(
                                         i) + ']/td[3]')
+        total_points = driver.find_element(By.XPATH,
+                                           '//*[@id="content"]/main/section[2]/div/div/div/table/tbody/tr[' + str(
+                                               i) + ']/td[4]')
+        previous_points = driver.find_element(By.XPATH,
+                                              '//*[@id="content"]/main/section[2]/div/div/div/table/tbody/tr[' + str(
+                                                  i) + ']/td[5]')
         ranks = driver.find_element(By.XPATH,
                                     '//*[@id="content"]/main/section[2]/div/div/div/table/tbody/tr[' + str(
                                         i) + ']/td[6]')
         dict_res['RK'].append(index.text)
         dict_res['Teams'].append(teams.text)
-        dict_res['Rank'].append(ranks.text)
+        dict_res['Total Points'].append(total_points.text)
+        dict_res['Previous Points'].append(previous_points.text)
+        dict_res['+/-'].append(ranks.text)
 
 driver.close()
 
