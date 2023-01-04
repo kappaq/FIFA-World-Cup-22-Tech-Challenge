@@ -1,0 +1,212 @@
+RK,Teams,Rank
+1,Brazil,3.74
+2,Belgium,-5.21
+3,Argentina,3.23
+4,France,-5.07
+5,England,-8.99
+6,Italy,12.28
+7,Spain,-1.71
+8,Netherlands,15.10
+9,Portugal,-2.09
+10,Denmark,1.10
+11,Germany,-8.75
+12,Croatia,13.49
+13,Mexico,-4.68
+14,Uruguay,-2.24
+15,Switzerland,14.49
+16,USA,-7.53
+17,Colombia,6.97
+18,Senegal,-0.21
+19,Wales,-12.31
+20,IR Iran,5.97
+21,Serbia,14.09
+22,Morocco,5.15
+23,Peru,-1.23
+24,Japan,4.85
+25,Sweden,-10.11
+26,Poland,2.41
+27,Ukraine,-5.80
+28,Korea Republic,4.28
+29,Chile,-5.25
+30,Tunisia,-0.32
+31,Costa Rica,3.53
+32,Nigeria,-6.23
+33,Russia,2.69
+34,Austria,-9.52
+35,Czechia,-10.69
+36,Hungary,5.44
+37,Algeria,8.51
+38,Australia,4.99
+39,Egypt,3.81
+40,Scotland,16.57
+41,Canada,1.18
+42,Norway,-15.53
+43,Cameroon,-13.51
+44,Ecuador,0.65
+45,Türkiye,-14.99
+46,Mali,5.97
+47,Paraguay,8.64
+48,Côte d'Ivoire,7.15
+49,Republic of Ireland,-2.29
+50,Qatar,-2.08
+51,Saudi Arabia,2.04
+52,Greece,-3.85
+53,Romania,6.84
+54,Burkina Faso,6.61
+55,Slovakia,-14.40
+56,Finland,7.19
+57,Venezuela,-0.80
+58,Bosnia and Herzegovina,-0.47
+59,Northern Ireland,-2.55
+60,Panama,4.01
+61,Ghana,-0.47
+62,Iceland,4.80
+63,Slovenia,11.56
+64,Jamaica,-3.20
+65,North Macedonia,-16.69
+66,Albania,-7.70
+67,South Africa,-0.96
+68,Iraq,4.10
+69,Montenegro,-13.56
+70,United Arab Emirates,-8.52
+71,Cabo Verde,4.59
+72,Bulgaria,10.20
+73,Congo DR,1.08
+74,El Salvador,-2.97
+75,Oman,-2.74
+76,Israel,0.20
+77,Uzbekistan,3.35
+78,Georgia,10.88
+79,China PR,0.00
+80,Honduras,2.29
+81,Gabon,0.00
+82,Bolivia,-2.53
+83,Guinea,-4.42
+84,Jordan,10.25
+85,Bahrain,-8.61
+86,Curaçao,-14.71
+87,Haiti,0.00
+88,Zambia,-3.39
+89,Uganda,-3.87
+90,Syria,-9.11
+91,Benin,-11.24
+92,Luxembourg,8.44
+93,Armenia,-8.49
+94,Palestine,0.00
+95,Kyrgyz Republic,-2.69
+96,Vietnam,7.81
+97,Belarus,-5.49
+98,Equatorial Guinea,0.33
+99,Lebanon,0.00
+100,Congo,-6.30
+101,Kenya,0.00
+102,Madagascar,6.96
+103,Mauritania,15.72
+104,Trinidad and Tobago,-10.56
+105,New Zealand,-4.98
+106,India,-6.56
+107,Kosovo,3.11
+108,Tajikistan,6.60
+109,Estonia,7.24
+110,Cyprus,3.30
+111,Thailand,4.23
+112,Korea DPR,0.00
+113,Kazakhstan,0.35
+114,Mozambique,-0.19
+115,Namibia,0.00
+116,Guinea-Bissau,-4.82
+117,Sierra Leone,-9.40
+118,Guatemala,-5.26
+119,Angola,6.82
+120,Libya,5.89
+121,Niger,-2.43
+122,Faroe Islands,10.88
+123,Azerbaijan,19.55
+124,Malawi,0.20
+125,Zimbabwe,0.00
+126,The Gambia,0.00
+127,Togo,-1.30
+128,Sudan,2.43
+129,Comoros,-4.26
+130,Tanzania,-2.02
+131,Antigua and Barbuda,0.00
+132,Central African Republic,0.91
+133,Philippines,0.00
+134,Latvia,-11.15
+135,Turkmenistan,0.00
+136,Solomon Islands,3.14
+137,Rwanda,-1.38
+138,Ethiopia,2.92
+139,Suriname,5.06
+140,St Kitts and Nevis,0.00
+141,Burundi,0.00
+142,Nicaragua,-7.35
+143,Eswatini,0.00
+144,Lithuania,-4.33
+145,Hong Kong,4.02
+146,Malaysia,4.73
+147,Lesotho,0.00
+148,Botswana,-3.71
+149,Kuwait,0.00
+150,Liberia,-1.59
+151,Andorra,6.50
+152,Indonesia,14.71
+153,Dominican Republic,0.00
+154,Maldives,7.84
+155,Yemen,0.00
+156,Afghanistan,0.00
+157,Chinese Taipei,0.00
+158,Myanmar,-4.02
+159,Papua New Guinea,9.86
+160,Singapore,-1.25
+161,New Caledonia,-4.12
+162,Tahiti,0.00
+163,Fiji,-3.94
+164,Vanuatu,-4.93
+165,South Sudan,0.00
+166,Barbados,0.00
+167,Cuba,0.00
+168,Malta,3.24
+169,Bermuda,0.00
+170,Puerto Rico,0.00
+171,Guyana,0.00
+172,St Lucia,0.00
+173,Grenada,-5.28
+174,Moldova,16.27
+175,Nepal,4.41
+176,Belize,0.00
+177,Cambodia,-5.68
+178,St Vincent and the Grenadines,5.28
+179,Montserrat,0.00
+180,Mauritius,0.00
+181,Chad,-1.76
+182,Macau,0.00
+183,Mongolia,0.00
+184,Dominica,0.00
+185,Bhutan,0.00
+186,São Tomé and Príncipe,0.00
+187,Laos,-9.15
+188,American Samoa,0.00
+189,Cook Islands,0.00
+190,Brunei Darussalam,1.31
+191,Samoa,0.00
+192,Bangladesh,1.27
+193,Djibouti,-2.79
+194,Pakistan,0.00
+195,Cayman Islands,0.00
+196,Liechtenstein,-11.60
+197,Tonga,0.00
+198,Timor-Leste,0.00
+199,Seychelles,-0.92
+200,Eritrea,0.00
+201,Aruba,0.00
+202,Bahamas,0.00
+203,Somalia,0.00
+204,Gibraltar,-4.39
+205,Guam,0.00
+206,Turks and Caicos Islands,0.00
+207,Sri Lanka,0.00
+208,US Virgin Islands,0.00
+209,British Virgin Islands,0.00
+210,Anguilla,0.00
+211,San Marino,-1.60
