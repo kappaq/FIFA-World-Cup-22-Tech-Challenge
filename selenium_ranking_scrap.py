@@ -1,3 +1,5 @@
+import json
+
 import driver as driver
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -32,20 +34,57 @@ time.sleep(1)
 rows_count = driver.find_elements(By.XPATH, '//*[@id="content"]/main/section[2]/div/div/div/table/tbody/tr')
 for i in range(len(rows_count)):
     i += 1
+    index = driver.find_element(By.XPATH,
+                                '//*[@id="content"]/main/section[2]/div/div/div/table/tbody/tr[' + str(
+                                    i) + ']/td[1]')
     teams = driver.find_element(By.XPATH,
                                 '//*[@id="content"]/main/section[2]/div/div/div/table/tbody/tr[' + str(
                                     i) + ']/td[3]')
+    total_points = driver.find_element(By.XPATH,
+                                '//*[@id="content"]/main/section[2]/div/div/div/table/tbody/tr[' + str(i) + ']/td[4]')
+    previous_points = driver.find_element(By.XPATH,
+                                '//*[@id="content"]/main/section[2]/div/div/div/table/tbody/tr[' + str(i) + ']/td[5]')
     ranks = driver.find_element(By.XPATH,
                                 '//*[@id="content"]/main/section[2]/div/div/div/table/tbody/tr[' + str(i) + ']/td[6]')
-
+    dict_res['RK'].append(index.text)
     dict_res['Teams'].append(teams.text)
-    dict_res['Rank'].append(ranks.text)
-
-# go to next page
+    dict_res['Total Points'].append(total_points.text)
+    dict_res['Previous Points'].append(previous_points.text)
+    dict_res['+/-'].append(ranks.text)
+    
+# go to next pages
+for page in range(4):
+    next_page = driver.find_element(By.XPATH, '//*[@id="content"]/main/section[2]/div/div/div[2]/div/div/div/div/div[3]/div/button')
+    driver.execute_script("arguments[0].click();", next_page)
+    time.sleep(1)
+    rows_count = driver.find_elements(By.XPATH, '//*[@id="content"]/main/section[2]/div/div/div/table/tbody/tr')
+    for i in range(len(rows_count)):
+        i += 1
+        index = driver.find_element(By.XPATH,
+                                    '//*[@id="content"]/main/section[2]/div/div/div/table/tbody/tr[' + str(
+                                        i) + ']/td[1]')
+        teams = driver.find_element(By.XPATH,
+                                    '//*[@id="content"]/main/section[2]/div/div/div/table/tbody/tr[' + str(
+                                        i) + ']/td[3]')
+        total_points = driver.find_element(By.XPATH,
+                                           '//*[@id="content"]/main/section[2]/div/div/div/table/tbody/tr[' + str(
+                                               i) + ']/td[4]')
+        previous_points = driver.find_element(By.XPATH,
+                                              '//*[@id="content"]/main/section[2]/div/div/div/table/tbody/tr[' + str(
+                                                  i) + ']/td[5]')
+        ranks = driver.find_element(By.XPATH,
+                                    '//*[@id="content"]/main/section[2]/div/div/div/table/tbody/tr[' + str(
+                                        i) + ']/td[6]')
+        dict_res['RK'].append(index.text)
+        dict_res['Teams'].append(teams.text)
+        dict_res['Total Points'].append(total_points.text)
+        dict_res['Previous Points'].append(previous_points.text)
+        dict_res['+/-'].append(ranks.text)
 
 driver.close()
 
 df_res = pd.DataFrame(dict_res)
+df_res.to_csv('the_ranking_scrap.csv', header=True, index=False)
 print("--------")
 print("\n")
 print(df_res.to_string())
