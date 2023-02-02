@@ -22,7 +22,9 @@ games_round_1 = [
 '//*[@id="g_1_fFk3r1B7"]', '//*[@id="g_1_dKTo7pl8"]', '//*[@id="g_1_js7KjP3R"]', '//*[@id="g_1_I5Sd8Axs"]', 
 '//*[@id="g_1_MsJPIsmK"]', '//*[@id="g_1_468UH12Q"]', '//*[@id="g_1_drCYctBf"]', '//*[@id="g_1_2LCUbMel"]', 
 '//*[@id="g_1_ClJjw1Og"]', '//*[@id="g_1_Ya9wwgP2"]', '//*[@id="g_1_Cj8sxDv9"]', '//*[@id="g_1_bswGq3oQ"]', 
-'//*[@id="g_1_MVnruykg"]', '//*[@id="g_1_A7cQ5yBg"]', '//*[@id="g_1_4fxmve4a"]', '//*[@id="g_1_GpbM6Hem"]'
+'//*[@id="g_1_MVnruykg"]', '//*[@id="g_1_A7cQ5yBg"]', '//*[@id="g_1_4fxmve4a"]', '//*[@id="g_1_GpbM6Hem"]',
+'//*[@id="g_1_lGiFEPmp"]', '//*[@id="g_1_G0rn6WE5"]', '//*[@id="g_1_hdEvqxcM"]', '//*[@id="g_1_2g49AZK4"]',
+'//*[@id="g_1_QXChy9gE"]', '//*[@id="g_1_M9g47WCj"]', '//*[@id="g_1_U7jo7z91"]', '//*[@id="g_1_rBfk6fO7"]'
 ]
 
 
@@ -66,8 +68,8 @@ for game in games_round_1:
 	driver.execute_script("arguments[0].click();", stats)
 	section = driver.find_elements(By.CLASS_NAME, ('stat__row'))
 	time = driver.find_element(By.XPATH, '//*[@id="detail"]/div[5]/div[1]')
-	home_team_name = driver.find_element(By.XPATH, '//*[@id="detail"]/div[5]/div[2]')
-	away_team_name = driver.find_element(By.XPATH, '//*[@id="detail"]/div[5]/div[4]')
+	home_team_name = driver.find_element(By.XPATH, '//*[@id="detail"]/div[5]/div[2]/div[3]/div[2]')
+	away_team_name = driver.find_element(By.XPATH, '//*[@id="detail"]/div[5]/div[4]/div[3]/div[1]/a')
 	final_score = driver.find_element(By.XPATH, '//*[@id="detail"]/div[5]/div[3]/div/div[1]')
 	dict_res['Time and Date'].append(time.text)
 	dict_res['Game'].append(home_team_name.text + '-' + away_team_name.text)
@@ -86,4 +88,4 @@ df_res = pd.DataFrame.from_dict(dict_res, orient='index')
 df_res = df_res.transpose()
 del df_res["Yellow Cards"]
 del df_res["Red Cards"]
-df_res.to_csv('flashscore_scrap.csv',header=True)
+df_res.to_csv('selenium_flashscore_scrap.csv',header=True)
