@@ -347,12 +347,33 @@ passing()
 detail_button = driver.find_element(By.XPATH, '//*[@id="stage-top-player-stats-options"]/li[5]/a')
 driver.execute_script("arguments[0].click();", detail_button)
 time.sleep(1)
+
+driver.refresh()
+time.sleep(3)
+
+detail_button = driver.find_element(By.XPATH, '//*[@id="stage-top-player-stats-options"]/li[5]/a')
+driver.execute_script("arguments[0].click();", detail_button)
+time.sleep(1)
+
+
+dropdown_total = driver.find_element(By.ID, 'statsAccumulationType')
+total_subcategory = Select(dropdown_total)
+total_subcategory.select_by_visible_text("Total")
+time.sleep(2)
+
+search_button = driver.find_element(By.XPATH, '//*[@class="search-button"]')
+driver.execute_script("arguments[0].click();", search_button)
+time.sleep(1)
+
+
 detailed_shoots_zones()
 
 dropdown_subcategory = driver.find_element(By.ID, 'subcategory')
 drop_subcategory = Select(dropdown_subcategory)
 drop_subcategory.select_by_visible_text("Situations")
 time.sleep(2)
+
+
 
 detailed_shoots_situations()
 
@@ -370,10 +391,27 @@ detail_button = driver.find_element(By.XPATH, '//*[@id="stage-top-player-stats-o
 driver.execute_script("arguments[0].click();", detail_button)
 time.sleep(1)
 
+driver.refresh()
+time.sleep(3)
+
+detail_button = driver.find_element(By.XPATH, '//*[@id="stage-top-player-stats-options"]/li[5]/a')
+driver.execute_script("arguments[0].click();", detail_button)
+time.sleep(1)
+
 dropdown_category = driver.find_element(By.ID, 'category')
 drop_category = Select(dropdown_category)
 drop_category.select_by_visible_text("Goals")
 time.sleep(2)
+
+dropdown_total = driver.find_element(By.ID, 'statsAccumulationType')
+total_subcategory = Select(dropdown_total)
+total_subcategory.select_by_visible_text("Total")
+time.sleep(2)
+
+search_button = driver.find_element(By.XPATH, '//*[@class="search-button"]')
+driver.execute_script("arguments[0].click();", search_button)
+time.sleep(1)
+
 
 detailed_goal_zone()
 
@@ -384,8 +422,20 @@ time.sleep(2)
 
 detailed_goal_situations()
 
+detail_button = driver.find_element(By.XPATH, '//*[@id="stage-top-player-stats-options"]/li[5]/a')
+driver.execute_script("arguments[0].click();", detail_button)
+time.sleep(1)
+
 drop_subcategory.select_by_visible_text("Body Parts")
 time.sleep(2)
+dropdown_total = driver.find_element(By.ID, 'statsAccumulationType')
+total_subcategory = Select(dropdown_total)
+total_subcategory.select_by_visible_text("Total")
+time.sleep(2)
+
+search_button = driver.find_element(By.XPATH, '//*[@class="search-button"]')
+driver.execute_script("arguments[0].click();", search_button)
+time.sleep(1)
 
 detailed_goal_body_part()
 
@@ -429,7 +479,14 @@ time.sleep(2)
 
 detailed_assists()
 
-####
+###
+
+detail_button = driver.find_element(By.XPATH, '//*[@id="stage-top-player-stats-options"]/li[5]/a')
+driver.execute_script("arguments[0].click();", detail_button)
+time.sleep(1)
+
+driver.refresh()
+time.sleep(3)
 
 detail_button = driver.find_element(By.XPATH, '//*[@id="stage-top-player-stats-options"]/li[5]/a')
 driver.execute_script("arguments[0].click();", detail_button)
@@ -439,6 +496,16 @@ dropdown_category = driver.find_element(By.ID, 'category')
 drop_category = Select(dropdown_category)
 drop_category.select_by_visible_text("Goals")
 time.sleep(2)
+
+dropdown_total = driver.find_element(By.ID, 'statsAccumulationType')
+total_subcategory = Select(dropdown_total)
+total_subcategory.select_by_visible_text("Total")
+time.sleep(2)
+
+search_button = driver.find_element(By.XPATH, '//*[@class="search-button"]')
+driver.execute_script("arguments[0].click();", search_button)
+time.sleep(1)
+
 
 drop_category.select_by_visible_text("Tackles")
 time.sleep(2)
@@ -455,6 +522,23 @@ detailed_fouls()
 drop_category.select_by_visible_text("Cards")
 time.sleep(2)
 detailed_cards()
+
+driver.refresh()
+time.sleep(3)
+
+detail_button = driver.find_element(By.XPATH, '//*[@id="stage-top-player-stats-options"]/li[5]/a')
+driver.execute_script("arguments[0].click();", detail_button)
+time.sleep(1)
+
+dropdown_category = driver.find_element(By.ID, 'category')
+drop_category = Select(dropdown_category)
+drop_category.select_by_visible_text("Goals")
+time.sleep(2)
+
+dropdown_total = driver.find_element(By.ID, 'statsAccumulationType')
+total_subcategory = Select(dropdown_total)
+total_subcategory.select_by_visible_text("Total")
+time.sleep(2)
 
 drop_category.select_by_visible_text("Offsides")
 time.sleep(2)
