@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
@@ -19,10 +20,8 @@ options.headless = True  # hide GUI
 options.add_argument("--window-size=1000,550")  # set window size to native GUI size
 options.add_argument("start-maximized")  # ensure window is full-screen
 
-PATH = 'chromedriver'
-driver = webdriver.Chrome(PATH)
+driver = webdriver.Remote(command_executor='http://chrome:4444/wd/hub',desired_capabilities=DesiredCapabilities.CHROME)
 
-a = ActionChains(driver)
 wait = WebDriverWait(driver, 10)
 
 driver.get(
