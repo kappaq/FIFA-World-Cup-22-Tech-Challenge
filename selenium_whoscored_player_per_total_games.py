@@ -324,26 +324,27 @@ def detailed_saves():
     df.to_csv('PlayerFiles/selenium_whoscored_scrap_player_stats_detailed_saves.csv', header=True, index=False)
 
 
-# summary()
-#
-# defensive_button = driver.find_element(By.XPATH, '//*[@id="stage-top-player-stats-options"]/li[2]/a')
-# driver.execute_script("arguments[0].click();", defensive_button)
-# time.sleep(1)
-#
-# defensive()
-#
-# offensive_button = driver.find_element(By.XPATH, '//*[@id="stage-top-player-stats-options"]/li[3]/a')
-# driver.execute_script("arguments[0].click();", offensive_button)
-# time.sleep(1)
-#
-# offensive()
-#
-# passing_button = driver.find_element(By.XPATH, '//*[@id="stage-top-player-stats-options"]/li[4]/a')
-# driver.execute_script("arguments[0].click();", passing_button)
-# time.sleep(1)
-#
-# passing()
-#
+
+summary()
+
+defensive_button = driver.find_element(By.XPATH, '//*[@id="stage-top-player-stats-options"]/li[2]/a')
+driver.execute_script("arguments[0].click();", defensive_button)
+time.sleep(1)
+
+defensive()
+
+offensive_button = driver.find_element(By.XPATH, '//*[@id="stage-top-player-stats-options"]/li[3]/a')
+driver.execute_script("arguments[0].click();", offensive_button)
+time.sleep(1)
+
+offensive()
+
+passing_button = driver.find_element(By.XPATH, '//*[@id="stage-top-player-stats-options"]/li[4]/a')
+driver.execute_script("arguments[0].click();", passing_button)
+time.sleep(1)
+
+passing()
+
 detail_button = driver.find_element(By.XPATH, '//*[@id="stage-top-player-stats-options"]/li[5]/a')
 driver.execute_script("arguments[0].click();", detail_button)
 time.sleep(1)
@@ -557,3 +558,179 @@ time.sleep(2)
 detailed_saves()
 
 driver.close()
+
+ctx = snowflake.connector.connect(user='KAPPAQ',
+                                  password='Divine123!',
+                                  account='ze71073',
+                                  warehouse='COMPUTE_WH',
+                                  region='eu-central-1',
+                                  schema='PUBLIC'
+                                  )
+cs = ctx.cursor()
+cs.execute("USE WAREHOUSE COMPUTE_WH")
+cs.execute("USE ROLE SYSADMIN")
+cs.execute("USE DATABASE WORLD_CUP_22_CHALLENGE")
+cs.execute("USE SCHEMA  PUBLIC")
+
+cs.execute(
+    'CREATE OR REPLACE TABLE "player_stats_summary" ("No." STRING, "Player" STRING, "Apps" STRING, "Mins" STRING, "Goals" STRING, "Assists" STRING, "Yel" STRING, "Red" STRING, "SpG" STRING, "PS%" STRING,"AerialsWon" STRING, "MotM" STRING, "Rating" STRING)'
+)
+df = pd.read_csv("PlayerFiles/selenium_whoscored_scrap_player_stats_summary.csv", sep=",")
+write_pandas(ctx, df, table_name="player_stats_summary")
+
+cs.execute(
+    'CREATE OR REPLACE TABLE "player_stats_defensive" ("No." STRING, "Player" STRING, "Apps" STRING, "Mins" STRING, "Tackles" STRING, "Inter" STRING, "Fouls" STRING, "Offsides" STRING, "Clear" STRING, "Drb" STRING, "Blocks"  STRING, "OwnG" STRING, "Rating" STRING)'
+)
+df = pd.read_csv("PlayerFiles/selenium_whoscored_scrap_player_stats_defensive.csv", sep=",")
+write_pandas(ctx, df, table_name="player_stats_defensive")
+
+cs.execute(
+    'CREATE OR REPLACE TABLE "player_stats_offensive" ("No." STRING , "Player" STRING , "Apps" STRING , "Mins" STRING , "Goals" STRING , "Assists" STRING , "SpG" STRING , "KeyP" STRING , "Drb" STRING , "Fouled" STRING , "Off" STRING , "Disp" STRING, "UnsTch" STRING , "Rating" STRING )'
+)
+df = pd.read_csv("PlayerFiles/selenium_whoscored_scrap_player_stats_offensive.csv", sep=",")
+write_pandas(ctx, df, table_name="player_stats_offensive")
+
+cs.execute(
+    'CREATE OR REPLACE TABLE "player_stats_passing" ("No." STRING , "Player" STRING , "Apps" STRING , "Mins" STRING , "Assist" STRING , "KeyP" STRING , "AvgP" STRING , "PS%" STRING , "Crosses" STRING , "LongB" STRING , "ThrB" STRING ,"Rating" STRING)'
+)
+df = pd.read_csv("PlayerFiles/selenium_whoscored_scrap_player_stats_passing.csv", sep=",")
+write_pandas(ctx, df, table_name="player_stats_passing")
+
+cs.execute(
+    'CREATE OR REPLACE TABLE "player_stats_detailed_shoots_zones" ("No." STRING , "Player" STRING , "Apps" STRING , "Mins" STRING , "Total" STRING , "OutOfBox" STRING , "SixYardBox" STRING , "PenaltyArea" STRING , "Rating" STRING )'
+)
+df = pd.read_csv("PlayerFiles/selenium_whoscored_scrap_player_stats_detailed_shoots_zones.csv", sep=",")
+write_pandas(ctx, df, table_name="player_stats_detailed_shoots_zones")
+
+cs.execute(
+    'CREATE OR REPLACE TABLE "player_stats_detailed_shoots_situations" ("No." STRING , "Player" STRING , "Apps" STRING , "Mins" STRING , "Total" STRING , "OpenPlay" STRING , "Counter" STRING , "SetPiece" STRING , "PenaltyTaken" STRING , "Rating" STRING )'
+)
+df = pd.read_csv("PlayerFiles/selenium_whoscored_scrap_player_stats_detailed_shoots_situations.csv", sep=",")
+write_pandas(ctx, df, table_name="player_stats_detailed_shoots_situations")
+
+cs.execute(
+    'CREATE OR REPLACE TABLE "player_stats_detailed_shoots_accuracy" ("No." STRING , "Player" STRING , "Apps" STRING , "Mins" STRING , "Total" STRING , "OffTarget" STRING , "OnPost" STRING , "OnTarget" STRING , "Blocked" STRING , "Rating" STRING)'
+)
+df = pd.read_csv("PlayerFiles/selenium_whoscored_scrap_player_stats_detailed_shoots_accuracy.csv", sep=",")
+write_pandas(ctx, df, table_name="player_stats_detailed_shoots_accuracy")
+
+cs.execute(
+    'CREATE OR REPLACE TABLE "player_stats_detailed_shoots_body_part" ("No." STRING , "Player" STRING , "Apps" STRING , "Mins" STRING , "Total" STRING , "RightFoot" STRING , "LeftFoot" STRING , "Head" STRING , "Other" STRING , "Rating" STRING)'
+)
+df = pd.read_csv("PlayerFiles/selenium_whoscored_scrap_player_stats_detailed_shoots_body_part.csv", sep=",")
+write_pandas(ctx, df, table_name="player_stats_detailed_shoots_body_part")
+
+cs.execute(
+    'CREATE OR REPLACE TABLE "player_stats_detailed_goal_zone" ("No." STRING , "Player" STRING , "Apps" STRING , "Mins" STRING , "Total" STRING , "SixYardBox" STRING , "PenaltyArea" STRING , "OutOfBox" STRING , "Rating" STRING)'
+)
+df = pd.read_csv("PlayerFiles/selenium_whoscored_scrap_player_stats_detailed_goal_zone.csv", sep=",")
+write_pandas(ctx, df, table_name="player_stats_detailed_goal_zone")
+
+cs.execute(
+    'CREATE OR REPLACE TABLE "player_stats_detailed_goal_situations" ("No." STRING , "Player" STRING , "Apps" STRING , "Mins" STRING , "Total" STRING , "OpenPlay" STRING , "Counter" STRING , "SetPiece" STRING , "PenaltyScored" STRING , "Own" STRING ,"Normal" STRING , "Rating" STRING )'
+)
+df = pd.read_csv("PlayerFiles/selenium_whoscored_scrap_player_stats_detailed_goal_situations.csv", sep=",")
+write_pandas(ctx, df, table_name="player_stats_detailed_goal_situations")
+
+cs.execute(
+    'CREATE OR REPLACE TABLE "player_stats_detailed_goal_body_part" ("No." STRING , "Player" STRING , "Apps" STRING , "Mins" STRING , "Total" STRING , "RightFoot" STRING , "LeftFoot" STRING , "Head" STRING , "Other" STRING , "Rating" STRING )'
+)
+df = pd.read_csv("PlayerFiles/selenium_whoscored_scrap_player_stats_detailed_goal_body_part.csv", sep=",")
+write_pandas(ctx, df, table_name="player_stats_detailed_goal_body_part")
+
+cs.execute(
+    'CREATE OR REPLACE TABLE "player_stats_detailed_dribbles" ("No." STRING , "Player" STRING , "Apps" STRING , "Mins" STRING , "Unsuccessful" STRING , "Successful" STRING , "Total Dribbles" STRING , "Rating" STRING)'
+)
+df = pd.read_csv("PlayerFiles/selenium_whoscored_scrap_player_stats_detailed_dribbles.csv", sep=",")
+write_pandas(ctx, df, table_name="player_stats_detailed_dribbles")
+
+cs.execute(
+    'CREATE OR REPLACE TABLE "player_stats_detailed_possesion_lose" ("No." STRING , "Player" STRING , "Apps" STRING , "Mins" STRING , "UnsuccessfulTouches" STRING , "Dispossessed" STRING , "Rating" STRING)'
+)
+df = pd.read_csv("PlayerFiles/selenium_whoscored_scrap_player_stats_detailed_possesion_lose.csv", sep=",")
+write_pandas(ctx, df, table_name="player_stats_detailed_possesion_lose")
+
+cs.execute(
+    'CREATE OR REPLACE TABLE "player_stats_detailed_aerial" ("No." STRING , "Player" STRING , "Apps" STRING , "Mins" STRING , "Total" STRING , "Won" STRING , "Lost" STRING , "Rating" STRING )'
+)
+df = pd.read_csv("PlayerFiles/selenium_whoscored_scrap_player_stats_detailed_aerial.csv", sep=",")
+write_pandas(ctx, df, table_name="player_stats_detailed_aerial")
+
+cs.execute(
+    'CREATE OR REPLACE TABLE "player_stats_detailed_passes_length" ("No." STRING , "Player" STRING , "Apps" STRING , "Mins" STRING , "Total" STRING , "AccLB" STRING , "InAccLB" STRING , "AccSP" STRING , "InAccSP" STRING , "Rating" STRING)'
+)
+df = pd.read_csv("PlayerFiles/selenium_whoscored_scrap_player_stats_detailed_passes_length.csv", sep=",")
+write_pandas(ctx, df, table_name="player_stats_detailed_passes_length")
+
+cs.execute(
+    'CREATE OR REPLACE TABLE "player_stats_detailed_passes_type" ("No." STRING , "Player" STRING , "Apps" STRING , "Mins" STRING , "AccCr" STRING , "InAccCr" STRING , "AccCrn" STRING , "InAccCrn" STRING , "AccFrk" STRING , "InAccFrK" STRING, "Rating" STRING)'
+)
+df = pd.read_csv("PlayerFiles/selenium_whoscored_scrap_player_stats_detailed_passes_type.csv", sep=",")
+write_pandas(ctx, df, table_name="player_stats_detailed_passes_type")
+
+cs.execute('CREATE OR REPLACE TABLE "player_stats_detailed_key_passes_types" ("No." STRING , "Player" STRING , "Apps" STRING , "Mins" STRING , "Cross" STRING , "Corner" STRING , "Throughball" STRING, "Freekick" STRING , "Throwin" STRING , "Other" STRING , "Rating" STRING)'
+)
+df = pd.read_csv("PlayerFiles/selenium_whoscored_scrap_player_stats_detailed_key_passes_types.csv", sep=",")
+write_pandas(ctx, df, table_name="player_stats_detailed_key_passes_types")
+
+
+cs.execute(
+    'CREATE OR REPLACE TABLE "player_stats_detailed_key_passes_length" ("No." STRING , "Player" STRING , "Apps" STRING , "Mins" STRING , "Total" STRING , "Long" STRING , "Short" STRING , "Rating" STRING)'
+)
+df = pd.read_csv("PlayerFiles/selenium_whoscored_scrap_player_stats_detailed_key_passes_length.csv", sep=",")
+write_pandas(ctx, df, table_name="player_stats_detailed_key_passes_length")
+
+
+cs.execute(
+    'CREATE OR REPLACE TABLE "player_stats_detailed_assists" ("No." STRING , "Player" STRING , "Apps" STRING , "Mins" STRING , "Cross" STRING , "Corner" STRING , "Throughball" STRING, "Freekick" STRING , "Throwin" STRING , "Other" STRING , "Total" STRING , "Rating" STRING )'
+)
+df = pd.read_csv("PlayerFiles/selenium_whoscored_scrap_player_stats_detailed_assists.csv", sep=",")
+write_pandas(ctx, df, table_name="player_stats_detailed_assists")
+
+cs.execute(
+    'CREATE OR REPLACE TABLE "player_stats_detailed_tackles" ("No." STRING , "Player" STRING , "Apps" STRING , "Mins" STRING , "TotalTackles" STRING , "DribbledPast" STRING , "TotalAttemptedTackles" STRING , "Rating" STRING )'
+)
+df = pd.read_csv("PlayerFiles/selenium_whoscored_scrap_player_stats_detailed_tackles.csv", sep=",")
+write_pandas(ctx, df, table_name="player_stats_detailed_tackles")
+
+cs.execute(
+    'CREATE OR REPLACE TABLE "player_stats_detailed_interception" ("No." STRING , "Player" STRING , "Apps" STRING , "Mins" STRING , "Total" STRING , "Rating" STRING)'
+)
+df = pd.read_csv("PlayerFiles/selenium_whoscored_scrap_player_stats_detailed_interception.csv", sep=",")
+write_pandas(ctx, df, table_name="player_stats_detailed_interception")
+
+cs.execute(
+    'CREATE OR REPLACE TABLE "player_stats_detailed_fouls" ("No." STRING , "Player" STRING , "Apps" STRING , "Mins" STRING , "Foulde" STRING , "Fouls" STRING , "Rating" STRING )'
+)
+df = pd.read_csv("PlayerFiles/selenium_whoscored_scrap_player_stats_detailed_fouls.csv", sep=",")
+write_pandas(ctx, df, table_name="player_stats_detailed_fouls")
+
+cs.execute(
+    'CREATE OR REPLACE TABLE "player_stats_detailed_cards" ("No." STRING , "Player" STRING , "Apps" STRING , "Mins" STRING , "Yellow" STRING , "red" STRING , "Rating" STRING)'
+)
+df = pd.read_csv("PlayerFiles/selenium_whoscored_scrap_player_stats_detailed_cards.csv", sep=",")
+write_pandas(ctx, df, table_name="player_stats_detailed_cards")
+
+cs.execute(
+    'CREATE OR REPLACE TABLE "player_stats_detailed_offside" ("No." STRING , "Player" STRING , "Apps" STRING , "Mins" STRING , "CaughtOffside" STRING , "Rating" STRING)'
+)
+df = pd.read_csv("PlayerFiles/selenium_whoscored_scrap_player_stats_detailed_offside.csv", sep=",")
+write_pandas(ctx, df, table_name="player_stats_detailed_offside")
+
+cs.execute(
+    'CREATE OR REPLACE TABLE "player_stats_detailed_clearances" ("No." STRING , "Player" STRING , "Apps" STRING , "Mins" STRING , "Total" STRING , "Rating" STRING )'
+)
+df = pd.read_csv("PlayerFiles/selenium_whoscored_scrap_player_stats_detailed_clearances.csv", sep=",")
+write_pandas(ctx, df, table_name="player_stats_detailed_clearances")
+
+cs.execute(
+    'CREATE OR REPLACE TABLE "player_stats_detailed_blocks" ("No." STRING , "Player" STRING , "Apps" STRING , "Mins" STRING , "ShotsBlocked" STRING , "CrossesBlocked" STRING , "PassesBlocked" STRING , "Rating" STRING)'
+)
+df = pd.read_csv("PlayerFiles/selenium_whoscored_scrap_player_stats_detailed_blocks.csv", sep=",")
+write_pandas(ctx, df, table_name="player_stats_detailed_blocks")
+
+cs.execute(
+    'CREATE OR REPLACE TABLE "player_stats_detailed_saves" ("No." STRING , "Player" STRING , "Apps" STRING , "Mins" STRING,"Total" STRING , "SixYardBox" STRING , "PenaltyArea" STRING , "OutOfBox" STRING , "Rating" STRING)'
+)
+df = pd.read_csv("PlayerFiles/selenium_whoscored_scrap_player_stats_detailed_saves.csv", sep=",")
+write_pandas(ctx, df, table_name="player_stats_detailed_saves")
