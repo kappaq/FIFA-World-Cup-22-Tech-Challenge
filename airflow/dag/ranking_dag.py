@@ -8,11 +8,11 @@ args = {
 }
 
 dag = DAG(
-    dag_id='who_scored_team-dag',
+    dag_id='ranking-dag',
     default_args=args,
     schedule_interval='@daily'
 )
 
-who_scored_team_scrap = BashOperator(task_id="who_scored_team_scrap",
+ranking = BashOperator(task_id="ranking",
                                      bash_command='python /opt/airflow/dags/script/ranking_scrap.py',
                                      dag=dag)
