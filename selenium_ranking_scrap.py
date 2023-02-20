@@ -85,8 +85,22 @@ driver.close()
 
 df_res = pd.DataFrame(dict_res)
 df_res.to_csv('the_ranking_scrap.csv', header=True, index=False)
-print("--------")
-print("\n")
-print(df_res.to_string())
-print("\n")
-print("--------")
+
+ctx = snowflake.connector.connect(user='KAPPAQ',
+                                  password='Divine123!',
+                                  account='ze71073',
+                                  warehouse='COMPUTE_WH',
+                                  region='eu-central-1',
+                                  schema='PUBLIC'
+                                  )
+cs = ctx.cursor()
+cs.execute("USE WAREHOUSE COMPUTE_WH")
+cs.execute("USE ROLE SYSADMIN")
+cs.execute("USE DATABASE WORLD_CUP_22_CHALLENGE")
+cs.execute("USE SCHEMA  PUBLIC")
+cs.execute(
+    'CREATE OR REPLACE  TABLE "ranking" ("RK" STRING,"Teams" STRING,"Total Points" STRING,"Previous Points" STRING,"+/-" STRING)')
+
+df_ranking = pd.read_csv("the_ranking_scrap.csv", sep=",")
+
+write_pandas(ctx, df_ranking, table_name="ranking")
